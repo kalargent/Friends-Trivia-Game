@@ -3,9 +3,9 @@
 
 
 // ON CLICK EVENT FOR START BUTTON TO GO AWAY 
-$(".btn-primary").on("click", function() {
+$(".btn-dark").on("click", function() {
     // remove button from view 
-    $(".btn-primary").remove(); 
+    $(".btn-dark").remove(); 
     // log to console
     console.log("user clicked start"); 
     trivia.getQuestion(); 
