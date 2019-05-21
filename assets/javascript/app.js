@@ -4,7 +4,10 @@
 
 // ON CLICK EVENT FOR START BUTTON TO GO AWAY 
 $(".btn-primary").on("click", function() {
+    // remove button from view 
     $(".btn-primary").remove(); 
+    // call get question? 
+
 })
 
 // ON CLICK FOR RESET BUTTON 
@@ -14,11 +17,18 @@ $(".btn-primary").on("click", function() {
 
 // GAME VARIABLE WITH METHODS
 // declare Game variable as an object with the following properties: 
+var trivia = [
     // questions
-    // current question 
+    questions = "",  
+    // current question
+    currentQuestion = "", 
     // correct answers 
+    correctGuesses = 0, 
     // incorrect answers 
+    incorrectGuesses = 0, 
     // timeouts 
+    timeOuts = 0, 
+]
 
     // QUESTIONS OBJECT WHICH INCLUDES AN ARRAY OF 
     // QUESTIONS
