@@ -28,14 +28,20 @@ var trivia = [
     incorrectGuesses = 0, 
     // timeouts 
     timeOuts = 0, 
-]
-
     // QUESTIONS OBJECT WHICH INCLUDES AN ARRAY OF 
-    // QUESTIONS
-        //question text 
-        // question answers (array)
-        // correct answer 
-
+    questions = [{
+        // question text
+        questionText = "According to Chandler, what scares the bejeezus out of him?", 
+        questionAnswer = ["Clowns", "Another Scary thing", "one more", "Michael Flatley, Lord of the Dance"], 
+        answer = "Michael Flatley, Lord of the Dance", 
+    }, 
+    {
+        questionText = "Monica and Ross had a grandmother who died. Chandler and Joey went to her funeral. Name that grandmother.", 
+        questionAnswer = ["Althea", "Dorothy", "Agnes", "Doris"], 
+        answer = "Althea", 
+    }, 
+    ],
+]
     //METHODS 
     // COUNTER
         // set the counter 
