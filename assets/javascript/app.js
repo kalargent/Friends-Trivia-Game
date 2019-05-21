@@ -1,4 +1,11 @@
+// WATCHED THE FOLLOWING VIDEO AS A RESOURCE TO CREATING MY GAME - USED IT TO SET MY MAIN PSEUDOCODE SECTIONS, ALL CODE IS MY OWN
+// https://www.youtube.com/watch?v=KndV7UxLpnk&list=PLf1tvjFO2P7vIxVV5fZh7by2Vpm-vBhWN&index=9&t=6s
+
+
 // ON CLICK EVENT FOR START BUTTON TO GO AWAY 
+$(".btn-primary").on("click", function() {
+    $(".btn-primary").remove(); 
+})
 
 // ON CLICK FOR RESET BUTTON 
 
