@@ -17,10 +17,9 @@ $(".btn-dark").on("click", function() {
 // ON CLICK FOR ANSWER BUTTONS
 
 
+
 // GAME VARIABLE WITH METHODS
 // declare Game variable as an object with the following properties: 
-
-
 var trivia = {
     // current question
     currentQuestion: "", 
@@ -30,6 +29,13 @@ var trivia = {
     incorrectGuesses: 0, 
     // timeouts 
     timeOuts: 0, 
+    // counter
+    counter: 30, 
+
+    // $(document).on("click", ".answerButton", function (e) {
+    //     trivia.clicked(e); 
+    //     console.log(e); 
+    // },
     
     // QUESTIONS OBJECT WHICH INCLUDES AN ARRAY OF 
     questions: [
@@ -81,17 +87,17 @@ var trivia = {
 
     // CORRECT ANSWER 
     answerCorrect: function () {
-        // when the user clicks a button with the answer button class 
-        $(document).on("click", ".answerButton"); 
-    }, 
-        // declare answer var? 
-        //increments answer var by 1
-        
+        // when the user clicks a button with the answerButton class 
+        //determine if the answer is correct 
+        if ("data-name" === currentQuestion.answer) {
+            console.log ("Correct!"); 
+        };  
         // displays a screen saying you were correct and <xx> was right
         // screen times out in 3 second 
         // checks if that was the last question 
             // if last: call results method 
             // else: call next question 
+    }, 
 
 
     //METHODS 
