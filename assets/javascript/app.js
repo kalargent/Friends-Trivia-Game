@@ -15,7 +15,15 @@ $(".btn-dark").on("click", function() {
 // ON CLICK FOR RESET BUTTON 
 
 // ON CLICK FOR ANSWER BUTTONS
-
+$("#button-display").on("click", ".answerButton", function (e) {
+    // answerButton.clicked(e); 
+    var selectedAnswer = $(e.target).attr("data-name"); 
+    console.log(e); 
+    console.log(e.target); 
+    console.log(event.target.data);
+    console.log($(e.target).attr("data-name")); 
+    trivia.answerCorrect(selectedAnswer); 
+})
 
 
 // GAME VARIABLE WITH METHODS
@@ -31,11 +39,8 @@ var trivia = {
     timeOuts: 0, 
     // counter
     counter: 30, 
-
-    // $(document).on("click", ".answerButton", function (e) {
-    //     trivia.clicked(e); 
-    //     console.log(e); 
-    // },
+    // question number 
+    questionNumber: 0, 
     
     // QUESTIONS OBJECT WHICH INCLUDES AN ARRAY OF 
     questions: [
@@ -56,12 +61,13 @@ var trivia = {
 
     // GET QUESTION METHOD
     getQuestion: function () {
-    
+        // clear the question display html
+        $(".question.display").empty; 
         // set the counter 
         // display counter on screen 
         // display the question on the screen 
-        $(".question-display").html("<p>" + this.questions[0].questionText + "</p>"); 
-        this.buttonGenerator();  
+        $(".question-display").html("<p>" + this.questions[this.questionNumber].questionText + "</p>"); 
+        this.buttonGenerator();         
     }, 
 
     //BUTTON GENERATOR METHOD 
@@ -75,7 +81,7 @@ var trivia = {
             a.attr("data-name", this.questions[0].questionAnswer[i]); 
             a.text(this.questions[0].questionAnswer[i]); 
             $("#button-display").append(a); 
-            console.log(a); 
+            console.log(a);    
         };
     }, 
             // if correct answer call correct method
@@ -86,13 +92,20 @@ var trivia = {
             // no, call next question
 
     // CORRECT ANSWER 
-    answerCorrect: function () {
-        // when the user clicks a button with the answerButton class 
+    answerCorrect: function (selectedAnswer) {
         //determine if the answer is correct 
-        if ("data-name" === currentQuestion.answer) {
-            console.log ("Correct!"); 
-        };  
-        // displays a screen saying you were correct and <xx> was right
+        console.log(this.questions[2]); 
+        if (selectedAnswer === this.questions[0].answer) {
+            console.log("win"); 
+            questionNumber++; 
+        }    
+        else if (selectedAnswer != this.questions[0].answer) {
+            console.log("lose"); 
+            questionNumber++; 
+        }
+
+        
+        // displays a screen saying you were correct or incorrect and <xx> was right
         // screen times out in 3 second 
         // checks if that was the last question 
             // if last: call results method 
