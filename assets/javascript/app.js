@@ -48,24 +48,39 @@ var trivia = {
         }, 
     ], 
 
-// GET QUESTION METHOD
+    // GET QUESTION METHOD
     getQuestion: function () {
     
         // set the counter 
         // display counter on screen 
         // display the question on the screen 
-        $(".question-display").html("<p>" + this.questions[0].questionText + "</p>");  
-        // display answer buttons on the screen 
+        $(".question-display").html("<p>" + this.questions[0].questionText + "</p>"); 
+        this.buttonGenerator();  
+    }, 
+
+    //BUTTON GENERATOR METHOD 
+    buttonGenerator: function () {
+    //empty buttons 
+        $("#button-display").empty(); 
+        // for loop to display answer buttons on the screen 
+        for (var i = 0; i < this.questions[0].questionAnswer.length; i++) {
+            var a = $("<button>"); 
+            a.addClass("answerButton"); 
+            a.attr("data-name", this.questions[0].questionAnswer[i]); 
+            a.text(this.questions[0].questionAnswer[i]); 
+            $("#button-display").append(a); 
+            console.log(a); 
+        };
+    }, 
+
+
             // if correct answer call correct method
             // else incorrect call incorrect method 
             // else timeout call timeout method 
         // is last question? 
             // yes, call results 
             // no, call next question
-    }
 
-}; 
- 
     //METHODS 
     // COUNTER
         // set the counter 
@@ -117,3 +132,4 @@ var trivia = {
     // RESET GAME 
         // reset all variables (tbd) 
         // call get question method 
+}; 
