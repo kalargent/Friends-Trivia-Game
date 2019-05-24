@@ -20,10 +20,10 @@ $("#button-display").on("click", ".answerButton", function (e) {
     var selectedAnswer = $(e.target).attr("data-name"); 
     console.log(e); 
     console.log(e.target); 
-    console.log(event.target.data);
+    console.log(e.target.data);
     console.log($(e.target).attr("data-name")); 
-    trivia.answerCorrect(selectedAnswer); 
-    trivia.answerIncorrect(selectedAnswer); 
+    trivia.checkAnswer(selectedAnswer); 
+    // trivia.answerIncorrect(selectedAnswer); 
 })
 
 
@@ -125,12 +125,12 @@ var trivia = {
             a.attr("data-name", this.questions[this.questionNumber].questionAnswer[i]); 
             a.text(this.questions[this.questionNumber].questionAnswer[i]); 
             $("#button-display").append(a); 
-            console.log(a);    
+            // console.log(a);    
         };
     }, 
 
     // CORRECT ANSWER 
-    answerCorrect: function (selectedAnswer) {
+    checkAnswer: function (selectedAnswer) {
         //determine if the answer is correct 
         console.log(this.questions[this.questionNumber]); 
         if (selectedAnswer === this.questions[this.questionNumber].answer) {
@@ -139,38 +139,51 @@ var trivia = {
             console.log (this.correctGuesses);
             $(".areYouRight").html("You're right! The correct answer was " + this.questions[this.questionNumber].answer); 
             this.questionNumber++; 
-            this.answerPage(); 
-        }}, 
-
-    //INCORRECT ANSWER    
-    answerIncorrect: function (selectedAnswer) {
-        //determine if the answer is incorrect 
-        console.log(this.questions[this.questionNumber]); 
-        if (selectedAnswer !== this.questions[this.questionNumber].answer) {
+        }    
+        else {
             console.log("lose"); 
             this.incorrectGuesses++; 
             console.log (this.incorrectGuesses);
             $(".areYouRight").html("You're wrong! The correct answer was " + this.questions[this.questionNumber].answer); 
             this.questionNumber++; 
-            this.getQuestion();
         }  
+
+        this.answerPage();
+            // this.answerPage(); 
     }, 
 
-    answerPage: function (){
-        $(".question-display").empty(); 
-        $(".areYouRight").empty(); 
+
+    answerPage: function () {
+        $(".question-display").empty();  
         $("#button-display").empty(); 
         // $("#message").html("You're right! The correct answer was " + this.questions[this.questionNumber].answer); 
-        setTimeout(("You're right! The correct answer was " + this.questions[this.questionNumber].answer),3000); 
-        this.getQuestion(); 
-    }
+        // setTimeout(("You're right! The correct answer was " + this.questions[this.questionNumber].answer), 3000); 
+        // this.getQuestion(); 
+        setTimeout (function (){
+            if (trivia.questionNumber < trivia.questions.length){
+                trivia.getQuestion(); 
+            }
 
+            else {
+                trivia.finalPage(); 
+            }
+        }, 1000
+        )
         
-        // displays a screen saying you were correct or incorrect and <xx> was right
-        // screen times out in 3 second 
-        // checks if that was the last question 
-            // if last: call results method 
-            // else: call next question 
+    }, 
+
+    finalPage: function () {
+        $(".question-display").empty();  
+        $("#button-display").empty(); 
+        $(".areYouRight").empty(); 
+        $("#message").html("<h2>You're done! Here are your results:</h2>");
+        $("#correct").html("Correct Guesses: " + this.correctGuesses);  
+        $("#incorrect").html("Incorrect Guesses: " + this.incorrectGuesses); 
+    }
+    
+    
+    
+
     
 
 
