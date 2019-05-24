@@ -58,6 +58,46 @@ var trivia = {
             questionAnswer: ["Althea", "Dorothy", "Agnes", "Doris"], 
             answer: "Althea"
         }, 
+        {
+            questionText: "What is Monica's biggest pet peeve?", 
+            questionAnswer: ["Animals dressed as humans", "Dirty towels on the floor", "Leaving the fridge open", "A dirty apartment"], 
+            answer: "Animals dressed as humans", 
+        },
+        {
+            questionText: "What was Monica's nickname when she was a field hockey goalie?", 
+            questionAnswer: ["Goalie Mon", "Big Fat Goalie", "The Goalster", "Goal Girl"], 
+            answer: "Big Fat Goalie", 
+        }, 
+        {
+            questionText: "Every week, the TV Guide comes to Chandler and Joey's apartment. What name appears on the address label?", 
+            questionAnswer: ["Chandler Bing", "Chanandeler Bong", "Joey Tribbiani", "Miss Chanandeler Bong"], 
+            answer: "Miss Chanandeler Bong", 
+        }, 
+        {
+            questionText: "In what part of her body did Monica get a pencil stuck at age 14?", 
+            questionAnswer: ["Her eye", "Her belly button", "Her ear", "Her mouth"], 
+            answer: "Her ear", 
+        }, 
+        {
+            questionText: "What is Joey's favorite food?", 
+            questionAnswer: ["Trifle", "Spaghetti", "French Fries", "Sandwiches"], 
+            answer: "Sandwiches", 
+        }, 
+        {
+            questionText: "Joey had an imaginary childhood friend. What was his name?", 
+            questionAnswer: ["Maurice", "Timmy", "Mike", "Fred"], 
+            answer: "Maurice", 
+        }, 
+        {
+            questionText: "Maurice's occupation was __________", 
+            questionAnswer: ["Cowboy", "Plumber", "Doctor", "Space Cowboy"], 
+            answer: "Space Cowboy", 
+        }, 
+        {
+            questionText: "Monica categorizes her towels. How many categories are there?", 
+            questionAnswer: ["10", "13", "5", "11"], 
+            answer: "11", 
+        }, 
     ], 
 
     //METHODS 
@@ -65,8 +105,8 @@ var trivia = {
     // GET QUESTION METHOD
     getQuestion: function () {
         // clear the question display html
-        $(".question-display").empty; 
-        $("#button-display").empty; 
+        $(".question-display").empty(); 
+        $(".areYouRight").empty(); 
         // set the counter 
         // display counter on screen 
         // display the question on the screen 
@@ -79,11 +119,11 @@ var trivia = {
     //empty buttons 
         $("#button-display").empty(); 
         // for loop to display answer buttons on the screen 
-        for (var i = 0; i < this.questions[0].questionAnswer.length; i++) {
+        for (var i = 0; i < this.questions[this.questionNumber].questionAnswer.length; i++) {
             var a = $("<button>"); 
             a.addClass("answerButton"); 
-            a.attr("data-name", this.questions[0].questionAnswer[i]); 
-            a.text(this.questions[0].questionAnswer[i]); 
+            a.attr("data-name", this.questions[this.questionNumber].questionAnswer[i]); 
+            a.text(this.questions[this.questionNumber].questionAnswer[i]); 
             $("#button-display").append(a); 
             console.log(a);    
         };
@@ -92,28 +132,35 @@ var trivia = {
     // CORRECT ANSWER 
     answerCorrect: function (selectedAnswer) {
         //determine if the answer is correct 
-        console.log(this.questions[2]); 
-        if (selectedAnswer === this.questions[0].answer) {
-            console.log("win"); 
-            this.questionNumber++; 
+        console.log(this.questions[this.questionNumber]); 
+        if (selectedAnswer === this.questions[this.questionNumber].answer) {
+            console.log("win");  
             this.correctGuesses++; 
             console.log (this.correctGuesses);
-            $(".areYouRight").html("You're right! The correct answer was " + this.questions[0].answer); 
-            trivia.getQuestion(); 
+            $(".areYouRight").html("You're right! The correct answer was " + this.questions[this.questionNumber].answer); 
+            this.questionNumber++; 
+            this.getQuestion(); 
         }}, 
 
     //INCORRECT ANSWER    
     answerIncorrect: function (selectedAnswer) {
         //determine if the answer is incorrect 
-        console.log(this.questions[2]); 
-        if (selectedAnswer !== this.questions[0].answer) {
+        console.log(this.questions[this.questionNumber]); 
+        if (selectedAnswer !== this.questions[this.questionNumber].answer) {
             console.log("lose"); 
-            this.questionNumber++; 
             this.incorrectGuesses++; 
             console.log (this.incorrectGuesses);
-            $(".areYouRight").html("You're wrong! The correct answer was " + this.questions[0].answer); 
+            $(".areYouRight").html("You're wrong! The correct answer was " + this.questions[this.questionNumber].answer); 
+            this.questionNumber++; 
+            this.getQuestion();
         }  
     }, 
+
+    // answerPage: function (){
+    //     $(".question-display").empty(); 
+    //     $(".areYouRight").empty(); 
+    //     $("#button-display").empty(); 
+    // }
 
         
         // displays a screen saying you were correct or incorrect and <xx> was right
@@ -126,25 +173,14 @@ var trivia = {
 
 
 
-
-    // CORRECT ANSWER 
-        // declare answer var
-        
-        //increments answer var by 1
-        // displays a screen saying you were correct and <xx> was right
+    //ANSWER SCREEN
+        // displays a screen saying you were correct/incorrect and <xx> was right
         // screen times out in 3 second 
         // checks if that was the last question 
             // if last: call results method 
             // else: call next question 
 
-    // INCORRECT ANSWER 
-        //increments incorrect answer var by 1
-        // displays a screen saying you were correct and <xx> was right
-        // screen times out in 3 second 
-        // checks if that was the last question 
-            // if last: call results method 
-            // else: call next question 
-
+    
     // TIMED OUT 
         // increments timeout var by 1 
         // displays a screen telling you time is up 
