@@ -39,7 +39,7 @@ var trivia = {
     // timeouts 
     timeOuts: 0, 
     // counter
-    counter: 30, 
+    counter: 10, 
     // question number 
     questionNumber: 0, 
     
@@ -101,15 +101,47 @@ var trivia = {
     ], 
 
     //METHODS 
+    // COUNTER 
+
+    // countdown: function () {
+    //     // clear any previous intervals
+    //     clearInterval(interval);
+    //     // count down in seconds 
+    //     interval = setInterval (decrement, 1000); 
+    //     counter--; 
+    //     // display countdown on screen 
+    //     $(".countdown").html(counter + "seconds left"); 
+    //     // log timeout when counter hits zero 
+    //     if (counter === 0) {
+    //         console.log("timeout"); 
+    //     }
+    // }, 
+
+    // COUNTDOWN 
+    // clear any previous intervals
+    run: function () {
+        clearInterval(this.counter); 
+        this.counter = setInterval(decrement, 1000); 
+    }, 
+    
+    decrement: function () {
+        run(); 
+        this.counter--; 
+        if (this.counter = 0) {
+            alert("times up"); 
+        }
+        
+    }, 
 
     // GET QUESTION METHOD
     getQuestion: function () {
         // clear the question display html
         $(".question-display").empty(); 
         $(".areYouRight").empty(); 
-        // set the counter 
-        // display counter on screen 
+        // start the countdown
+        // countdown(); 
         // display the question on the screen 
+        $(".countdown").html(this.counter + " seconds left to answer"); 
         $(".question-display").html("<p>" + this.questions[this.questionNumber].questionText + "</p>"); 
         this.buttonGenerator();         
     }, 
