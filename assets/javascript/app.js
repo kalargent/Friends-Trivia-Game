@@ -23,6 +23,7 @@ $("#button-display").on("click", ".answerButton", function (e) {
     console.log(event.target.data);
     console.log($(e.target).attr("data-name")); 
     trivia.answerCorrect(selectedAnswer); 
+    trivia.answerIncorrect(selectedAnswer); 
 })
 
 
@@ -84,12 +85,6 @@ var trivia = {
             console.log(a);    
         };
     }, 
-            // if correct answer call correct method
-            // else incorrect call incorrect method 
-            // else timeout call timeout method 
-        // is last question? 
-            // yes, call results 
-            // no, call next question
 
     // CORRECT ANSWER 
     answerCorrect: function (selectedAnswer) {
@@ -97,12 +92,24 @@ var trivia = {
         console.log(this.questions[2]); 
         if (selectedAnswer === this.questions[0].answer) {
             console.log("win"); 
-            questionNumber++; 
-        }    
-        else if (selectedAnswer != this.questions[0].answer) {
+            this.questionNumber++; 
+            $(".areYouRight").html("You're right! The correct answer was " + this.questions[0].answer); 
+        }}, 
+
+    //INCORRECT ANSWER    
+    answerIncorrect: function (selectedAnswer) {
+        //determine if the answer is incorrect 
+        console.log(this.questions[2]); 
+        if (selectedAnswer !== this.questions[0].answer) {
             console.log("lose"); 
-            questionNumber++; 
-        }
+            this.questionNumber++; 
+            $(".areYouRight").html("You're wrong! The correct answer was " + this.questions[0].answer); 
+        }  
+    }, 
+        // else if (selectedAnswer != this.questions[0].answer) {
+        //     console.log("lose"); 
+        //     this.questionNumber++; 
+        // }
 
         
         // displays a screen saying you were correct or incorrect and <xx> was right
@@ -110,7 +117,7 @@ var trivia = {
         // checks if that was the last question 
             // if last: call results method 
             // else: call next question 
-    }, 
+    
 
 
     //METHODS 
