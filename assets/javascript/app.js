@@ -139,7 +139,7 @@ var trivia = {
             console.log (this.correctGuesses);
             $(".areYouRight").html("You're right! The correct answer was " + this.questions[this.questionNumber].answer); 
             this.questionNumber++; 
-            this.getQuestion(); 
+            this.answerPage(); 
         }}, 
 
     //INCORRECT ANSWER    
@@ -156,11 +156,14 @@ var trivia = {
         }  
     }, 
 
-    // answerPage: function (){
-    //     $(".question-display").empty(); 
-    //     $(".areYouRight").empty(); 
-    //     $("#button-display").empty(); 
-    // }
+    answerPage: function (){
+        $(".question-display").empty(); 
+        $(".areYouRight").empty(); 
+        $("#button-display").empty(); 
+        // $("#message").html("You're right! The correct answer was " + this.questions[this.questionNumber].answer); 
+        setTimeout(("You're right! The correct answer was " + this.questions[this.questionNumber].answer),3000); 
+        this.getQuestion(); 
+    }
 
         
         // displays a screen saying you were correct or incorrect and <xx> was right
