@@ -60,10 +60,13 @@ var trivia = {
         }, 
     ], 
 
+    //METHODS 
+
     // GET QUESTION METHOD
     getQuestion: function () {
         // clear the question display html
-        $(".question.display").empty; 
+        $(".question-display").empty; 
+        $("#button-display").empty; 
         // set the counter 
         // display counter on screen 
         // display the question on the screen 
@@ -93,7 +96,10 @@ var trivia = {
         if (selectedAnswer === this.questions[0].answer) {
             console.log("win"); 
             this.questionNumber++; 
+            this.correctGuesses++; 
+            console.log (this.correctGuesses);
             $(".areYouRight").html("You're right! The correct answer was " + this.questions[0].answer); 
+            trivia.getQuestion(); 
         }}, 
 
     //INCORRECT ANSWER    
@@ -103,13 +109,11 @@ var trivia = {
         if (selectedAnswer !== this.questions[0].answer) {
             console.log("lose"); 
             this.questionNumber++; 
+            this.incorrectGuesses++; 
+            console.log (this.incorrectGuesses);
             $(".areYouRight").html("You're wrong! The correct answer was " + this.questions[0].answer); 
         }  
     }, 
-        // else if (selectedAnswer != this.questions[0].answer) {
-        //     console.log("lose"); 
-        //     this.questionNumber++; 
-        // }
 
         
         // displays a screen saying you were correct or incorrect and <xx> was right
@@ -120,21 +124,8 @@ var trivia = {
     
 
 
-    //METHODS 
-    // COUNTER
-        // set the counter 
 
-    // NEXT QUESTION 
-        // reset the counter 
-        // display counter on screen 
-        // display the question on the screen 
-        // display answer buttons on the screen 
-            // if correct answer call correct method
-            // else incorrect call incorrect method 
-            // else timeout call timeout method 
-        // is last question? 
-            // yes, call results 
-            // no, call next question 
+
 
     // CORRECT ANSWER 
         // declare answer var
