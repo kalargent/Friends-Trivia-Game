@@ -40,6 +40,7 @@ var trivia = {
     timeOuts: 0, 
     // counter
     counter: 10, 
+    counterTimer: null, 
     // question number 
     questionNumber: 0, 
     
@@ -120,14 +121,15 @@ var trivia = {
     // COUNTDOWN 
     // clear any previous intervals
     run: function () {
-        clearInterval(this.counter); 
-        this.counter = setInterval(decrement, 1000); 
+        clearInterval(this.counterTimer); 
+        this.counterTimer = setInterval(this.decrement, 1000); 
     }, 
     
     decrement: function () {
-        run(); 
-        this.counter--; 
-        if (this.counter = 0) {
+        trivia.counter--; 
+        $(".countdown").html(trivia.counter + " seconds left to answer");
+        if (trivia.counter === 0) {
+            clearInterval(trivia.counterTimer);
             alert("times up"); 
         }
         
@@ -139,7 +141,7 @@ var trivia = {
         $(".question-display").empty(); 
         $(".areYouRight").empty(); 
         // start the countdown
-        // countdown(); 
+        this.run ();
         // display the question on the screen 
         $(".countdown").html(this.counter + " seconds left to answer"); 
         $(".question-display").html("<p>" + this.questions[this.questionNumber].questionText + "</p>"); 
