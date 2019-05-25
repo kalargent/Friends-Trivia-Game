@@ -39,7 +39,7 @@ var trivia = {
     // timeouts 
     timeOuts: 0, 
     // counter
-    counter: 10, 
+    counter: 3, 
     counterTimer: null, 
     // question number 
     questionNumber: 0, 
@@ -123,6 +123,7 @@ var trivia = {
     run: function () {
         clearInterval(this.counterTimer); 
         this.counterTimer = setInterval(this.decrement, 1000); 
+        trivia.counter = 10; 
     }, 
     
     decrement: function () {
@@ -130,7 +131,7 @@ var trivia = {
         $(".countdown").html(trivia.counter + " seconds left to answer");
         if (trivia.counter === 0) {
             clearInterval(trivia.counterTimer);
-            alert("times up"); 
+            trivia.checkAnswer(); 
         }
         
     }, 
@@ -167,7 +168,12 @@ var trivia = {
     checkAnswer: function (selectedAnswer) {
         //determine if the answer is correct 
         console.log(this.questions[this.questionNumber]); 
-        if (selectedAnswer === this.questions[this.questionNumber].answer) {
+        if (selectedAnswer === undefined) { 
+            $(".areYouRight").html("You ran out of time. The correct answer was " + this.questions[this.questionNumber].answer); 
+            this.questionNumber++; 
+            this. timeOuts++; 
+        }
+        else if (selectedAnswer === this.questions[this.questionNumber].answer) {
             console.log("win");  
             this.correctGuesses++; 
             console.log (this.correctGuesses);
@@ -190,6 +196,8 @@ var trivia = {
     answerPage: function () {
         $(".question-display").empty();  
         $("#button-display").empty(); 
+        $(".countdown").empty(); 
+        clearInterval(trivia.counterTimer);
         // $("#message").html("You're right! The correct answer was " + this.questions[this.questionNumber].answer); 
         // setTimeout(("You're right! The correct answer was " + this.questions[this.questionNumber].answer), 3000); 
         // this.getQuestion(); 
@@ -201,7 +209,7 @@ var trivia = {
             else {
                 trivia.finalPage(); 
             }
-        }, 1000
+        }, 3000
         )
         
     }, 
@@ -213,6 +221,7 @@ var trivia = {
         $("#message").html("<h2>You're done! Here are your results:</h2>");
         $("#correct").html("Correct Guesses: " + this.correctGuesses);  
         $("#incorrect").html("Incorrect Guesses: " + this.incorrectGuesses); 
+        $("#timeout").html("Time Outs: " + this.timeOuts);
     }
     
     
