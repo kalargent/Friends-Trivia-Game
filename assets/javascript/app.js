@@ -15,13 +15,11 @@ $(".btn-dark").on("click", function() {
 // ON CLICK FOR RESET BUTTON 
 $(".btn-secondary").on("click", function() {
     console.log("user clicked Restart");
-    // $(".image-correct").hide ();
-    // $(".image-incorrect").hide ();
     $(".final-page").hide();
 //     correctGuesses = 0; 
 //     incorrectGuesses = 0; 
 //     timeOuts = 0;  
-    trivia.getQuestion(); 
+//     trivia.getQuestion(); 
 })
 
 
@@ -226,7 +224,7 @@ var trivia = {
             else {
                 trivia.finalPage(); 
             }
-        }, 3000
+        }, 500
         )
         
     }, 
