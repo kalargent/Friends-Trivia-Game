@@ -1,0 +1,55 @@
+body {
+
+    /* background-image: url("assets/images/logo2.jpg");
+    background-size: cover;  */
+    background: darkgray; 
+
+}
+.jumbotron {
+    background-image: url("../images/umbrellas.png"); 
+    background-size: cover; 
+    height: 400px; 
+}
+
+.display-4 {
+    color: white; 
+    font-weight: bolder; 
+}
+
+.lead { 
+    color: white; 
+    font-weight: bolder; 
+}
+
+.btn-dark {
+    justify-content: center; 
+    margin: 10px; 
+}
+
+.container { 
+    background: whitesmoke; 
+    padding: 50px; 
+    border: 10px;
+    border-color: black; 
+}
+
+/* .col-md-1 { 
+    background-image: url("../images/playingthegame.jpg"); 
+    background-size: cover; 
+} */
+
+.countdown { 
+    color: blue; 
+    align-content: center; 
+    font-family: Verdana, Geneva, Tahoma, sans-serif; 
+}
+
+.question-display { 
+    color: red; 
+    font-family: Verdana, Geneva, Tahoma, sans-serif; 
+}
+
+.button-display { 
+    color: yellow; 
+}
+

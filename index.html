@@ -6,36 +6,63 @@
   <title>Trivia Game</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-  <!-- <link rel="stylesheet" href="assets/style.css"> -->
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
-<body>
+<!-- <body>
     <div class = "jumbotron">
         <h1 class ="display-4"> Trivia Game </h1>
         <p class = "lead">Here are some instructions!</p>
-    </div>
+    </div> -->
+
 
     <div class = "container">
-        <div>
-            <button type="button" class="btn btn-dark" id="start">Start</button>
+        <div class="row">
+            <div class="col-md"> 
+                <div class="card" style="width: 18rem;">
+                    <img src="assets/images/umbrellas.png" class="card-img-top">
+                    <div class="card-body">
+                      <h5 class="card-title">The One with the Embryos</h5>
+                      <p class="card-text">In season four, episode 12 of the hit series "Friends", Joey and Chandler claim to know more about Monica and Rachel than they do about them.</p>
+                    </div>
+                <div>
+                        <div>
+                        <button type="button" class="btn btn-dark" id="start">Start</button>
+                        </div>
+                  </div>
+            </div>
         </div>
         
-        <div class="countdown"></div>
-        <div class="question-display"></div>
-        <div id="button-display"></div>
-        <div class="areYouRight">
-            <div id="image"></div>
+        <div class="col-md">
+            <div class="countdown"></div>
+            <div class="question-display"></div>
+            <div id="button-display"></div>
+
+            <div class="areYouRight">
+                <div id="image"></div>
+            </div>
+            <div class="answer-page"></div>
+            <div class="final-page">
+                <div id="message"></div>
+                <div id="correct"></div>
+                <div id="incorrect"></div>
+                <div id="timeout"></div>
+                <div id="photo"></div>
+            </div>
         </div>
-        <div class="answer-page"></div>
+    </div>
+        
+
+        <!-- <div class="answer-page"></div>
         <div class="final-page">
             <div id="message"></div>
             <div id="correct"></div>
             <div id="incorrect"></div>
             <div id="timeout"></div>
             <div id="photo"></div>
-            <!-- <div>
+            <div>
                     <button type="button" class="btn btn-light" id="startagain">Start</button>
-            </div> -->
+            </div> --> -->
         </div>
 
        
