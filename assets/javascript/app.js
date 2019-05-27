@@ -16,10 +16,11 @@ $(".btn-dark").on("click", function() {
 $(".btn-secondary").on("click", function() {
     console.log("user clicked Restart");
     $(".final-page").hide();
-//     correctGuesses = 0; 
-//     incorrectGuesses = 0; 
-//     timeOuts = 0;  
-//     trivia.getQuestion(); 
+    trivia.questionNumber = 0; 
+    trivia.correctGuesses = 0; 
+    trivia.incorrectGuesses = 0; 
+    trivia.timeOuts = 0;  
+    trivia.getQuestion(); 
 })
 
 
