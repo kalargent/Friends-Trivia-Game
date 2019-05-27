@@ -13,6 +13,19 @@ $(".btn-dark").on("click", function() {
 })
 
 // ON CLICK FOR RESET BUTTON 
+$(".btn-secondary").on("click", function() {
+    console.log("user clicked Restart");
+    // $(".image-correct").hide ();
+    // $(".image-incorrect").hide ();
+    $(".final-page").hide();
+//     correctGuesses = 0; 
+//     incorrectGuesses = 0; 
+//     timeOuts = 0;  
+    trivia.getQuestion(); 
+})
+
+
+
 
 // ON CLICK FOR ANSWER BUTTONS
 $("#button-display").on("click", ".answerButton", function (e) {
@@ -141,6 +154,8 @@ var trivia = {
         // clear the question display html
         $(".question-display").empty(); 
         $(".areYouRight").empty(); 
+        $(".image-correct").hide ();
+        $(".image-incorrect").hide ();
         // start the countdown
         this.run ();
         // display the question on the screen 
@@ -178,13 +193,15 @@ var trivia = {
             this.correctGuesses++; 
             console.log (this.correctGuesses);
             $(".areYouRight").html("You're right! The correct answer was " + this.questions[this.questionNumber].answer); 
+            $(".image-correct").show (); 
             this.questionNumber++; 
         }    
         else {
             console.log("lose"); 
             this.incorrectGuesses++; 
             console.log (this.incorrectGuesses);
-            $(".areYouRight").html("You're wrong! The correct answer was " + this.questions[this.questionNumber].answer); 
+            $(".areYouRight").html("You're wrong! The correct answer was " + this.questions[this.questionNumber].answer);
+            $(".image-incorrect").show();  
             this.questionNumber++; 
         }  
 
@@ -218,6 +235,9 @@ var trivia = {
         $(".question-display").empty();  
         $("#button-display").empty(); 
         $(".areYouRight").empty(); 
+        $(".image-correct").hide ();
+        $(".image-incorrect").hide ();
+        $(".final-page").show (); 
         $("#message").html("<h2>You're done! Here are your results:</h2>");
         $("#correct").html("Correct Guesses: " + this.correctGuesses);  
         $("#incorrect").html("Incorrect Guesses: " + this.incorrectGuesses); 

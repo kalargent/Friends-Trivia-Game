@@ -39,17 +39,28 @@ body {
 } */
 
 .countdown { 
-    color: blue; 
+    color: #2BAFE4; 
     align-content: center; 
     font-family: Verdana, Geneva, Tahoma, sans-serif; 
 }
 
 .question-display { 
-    color: red; 
+    color:#93151c; 
     font-family: Verdana, Geneva, Tahoma, sans-serif; 
 }
 
-.button-display { 
-    color: yellow; 
+.image-correct, .image-incorrect { 
+    display:none;
+}
+
+.image-correct img, .image-incorrect img{ 
+    width: 200px; 
+}
+
+.answerButton { 
+    /* color: #2bafe4; 
+    border: #2bafe4;  */
+    width: 200px; 
+    margin: 10px; 
 }
 

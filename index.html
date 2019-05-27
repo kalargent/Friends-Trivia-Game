@@ -8,14 +8,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
-
-<!-- <body>
-    <div class = "jumbotron">
-        <h1 class ="display-4"> Trivia Game </h1>
-        <p class = "lead">Here are some instructions!</p>
-    </div> -->
-
-
     <div class = "container">
         <div class="row">
             <div class="col-md"> 
@@ -35,20 +27,27 @@
         
         <div class="col-md">
             <div class="countdown"></div>
+            <br>
             <div class="question-display"></div>
+            <br>
             <div id="button-display"></div>
 
-            <div class="areYouRight">
-                <div id="image"></div>
-            </div>
+            <div class="areYouRight"></div>
+            <div class="image-correct"><img src ="assets/images/monica.gif"></div>
+            <div class="image-incorrect" ><img src ="assets/images/joey.gif"></div>
+            
             <div class="answer-page"></div>
-            <div class="final-page">
+            <div class="final-page" style="display: none">
                 <div id="message"></div>
                 <div id="correct"></div>
                 <div id="incorrect"></div>
                 <div id="timeout"></div>
                 <div id="photo"></div>
+                <div>
+                    <button type="button" class="btn btn-secondary" id="start">Start</button>
+                </div>
             </div>
+            
         </div>
     </div>
         
@@ -62,7 +61,7 @@
             <div id="photo"></div>
             <div>
                     <button type="button" class="btn btn-light" id="startagain">Start</button>
-            </div> --> -->
+            </div> --> 
         </div>
 
        
