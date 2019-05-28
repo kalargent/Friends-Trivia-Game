@@ -54,7 +54,9 @@ var trivia = {
     counter: 3, 
     counterTimer: null, 
     // question number 
-    questionNumber: 0, 
+    questionNumber: 0,
+    // // correct audio
+    // yay:  
     
     // QUESTIONS OBJECT WHICH INCLUDES AN ARRAY OF 
     questions: [
@@ -178,6 +180,11 @@ var trivia = {
         };
     }, 
 
+    // AUDIO CORRECT 
+    audioCorrect: function () {
+
+    }, 
+
     // CORRECT ANSWER 
     checkAnswer: function (selectedAnswer) {
         //determine if the answer is correct 
@@ -192,8 +199,7 @@ var trivia = {
             this.correctGuesses++; 
             console.log (this.correctGuesses);
             $(".areYouRight").html("You're right! The correct answer was " + this.questions[this.questionNumber].answer); 
-            $(".image-correct").show ();
-            // $(".yay-audio").play ("../assets/audio/i_rock.mp3");  
+            $(".image-correct").show ();  
             this.questionNumber++; 
         }    
         else {
@@ -226,7 +232,7 @@ var trivia = {
             else {
                 trivia.finalPage(); 
             }
-        }, 500
+        }, 3000
         )
         
     }, 
