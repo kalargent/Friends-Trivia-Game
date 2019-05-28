@@ -192,7 +192,8 @@ var trivia = {
             this.correctGuesses++; 
             console.log (this.correctGuesses);
             $(".areYouRight").html("You're right! The correct answer was " + this.questions[this.questionNumber].answer); 
-            $(".image-correct").show (); 
+            $(".image-correct").show ();
+            // $(".yay-audio").play ("../assets/audio/i_rock.mp3");  
             this.questionNumber++; 
         }    
         else {
