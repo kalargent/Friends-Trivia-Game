@@ -49,11 +49,11 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif; 
 }
 
-.image-correct, .image-incorrect { 
+.image-correct, .image-incorrect, .image-timeout{ 
     display:none;
 }
 
-.image-correct img, .image-incorrect img{ 
+.image-correct img, .image-incorrect img, .image-timeout img{ 
     width: 200px; 
 }
 

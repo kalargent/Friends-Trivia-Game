@@ -8,6 +8,13 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
+<body>
+    <audio id="win">
+        <source src = "assets/audio/i_rock.mp3" type= "audio/mpeg">
+    </audio>
+    <audio id="lose">
+            <source src = "assets/audio/oh_no.mp3" type= "audio/mpeg">
+    </audio>
     <div class = "container">
         <div class="row">
             <div class="col-md"> 
@@ -32,13 +39,19 @@
             <br>
             <div id="button-display"></div>
 
-            <div class="areYouRight"></div>
+            <div class="areYouRight">
+            </div>
             <div class="image-correct yay-audio"><img src ="assets/images/monica.gif"></a>
-                <audio id="i-rock">
-                    <autoplay src = "/assets/audio/i_rock.mp3" type="audio/mpeg">
-                </audio>
+                <!-- <audio id="win">
+                    <autoplay src = "/assets/audio/i_rock.mp3" type= "audio/mpeg">
+                    </autoplay>
+                </audio> -->
             </div>
             <div class="image-incorrect boo-audio" ><img src ="assets/images/joey.gif"></div>
+            <div class="image-timeout timeout-audio" ><img src ="assets/images/timeup.gif"></div>
+
+        </div>
+
             
             <div class="answer-page"></div>
 

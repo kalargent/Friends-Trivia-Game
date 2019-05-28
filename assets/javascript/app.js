@@ -157,6 +157,7 @@ var trivia = {
         $(".areYouRight").empty(); 
         $(".image-correct").hide ();
         $(".image-incorrect").hide ();
+        $(".image-timeout").hide(); 
         // start the countdown
         this.run ();
         // display the question on the screen 
@@ -191,6 +192,7 @@ var trivia = {
         console.log(this.questions[this.questionNumber]); 
         if (selectedAnswer === undefined) { 
             $(".areYouRight").html("You ran out of time. The correct answer was " + this.questions[this.questionNumber].answer); 
+            $(".image-timeout").show (); 
             this.questionNumber++; 
             this. timeOuts++; 
         }
@@ -199,7 +201,8 @@ var trivia = {
             this.correctGuesses++; 
             console.log (this.correctGuesses);
             $(".areYouRight").html("You're right! The correct answer was " + this.questions[this.questionNumber].answer); 
-            $(".image-correct").show ();  
+            $(".image-correct").show (); 
+            $("#win")[0].play(); 
             this.questionNumber++; 
         }    
         else {
@@ -207,7 +210,8 @@ var trivia = {
             this.incorrectGuesses++; 
             console.log (this.incorrectGuesses);
             $(".areYouRight").html("You're wrong! The correct answer was " + this.questions[this.questionNumber].answer);
-            $(".image-incorrect").show();  
+            $(".image-incorrect").show();
+            $("#lose")[0].play();   
             this.questionNumber++; 
         }  
 
@@ -232,7 +236,7 @@ var trivia = {
             else {
                 trivia.finalPage(); 
             }
-        }, 3000
+        }, 500
         )
         
     }, 
