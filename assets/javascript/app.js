@@ -195,7 +195,7 @@ var trivia = {
             $(".image-timeout").show ();
             $("#timeout")[0].play(); 
             this.questionNumber++; 
-            this. timeOuts++; 
+            this.timeOuts++; 
         }
         else if (selectedAnswer === this.questions[this.questionNumber].answer) {
             console.log("win");  
@@ -237,7 +237,7 @@ var trivia = {
             else {
                 trivia.finalPage(); 
             }
-        }, 500
+        }, 2000
         )
         
     }, 
@@ -252,42 +252,7 @@ var trivia = {
         $("#message").html("<h2>You're done! Here are your results:</h2>");
         $("#correct").html("Correct Guesses: " + this.correctGuesses);  
         $("#incorrect").html("Incorrect Guesses: " + this.incorrectGuesses); 
-        $("#timeout").html("Time Outs: " + this.timeOuts);
+        $("#time-out").html("Time Outs: " + this.timeOuts);
     }
-    
-    
-    
 
-    
-
-
-
-
-    //ANSWER SCREEN
-        // displays a screen saying you were correct/incorrect and <xx> was right
-        // screen times out in 3 second 
-        // checks if that was the last question 
-            // if last: call results method 
-            // else: call next question 
-
-    
-    // TIMED OUT 
-        // increments timeout var by 1 
-        // displays a screen telling you time is up 
-        // screen times out in 3 second 
-        // checks if that was the last question 
-            // if last: call results method 
-            // else: call next question 
-
-
-    // SHOW RESULTS 
-        // display the results screen with 
-            // correct 
-            // incorrect 
-            // timed out
-            // reset button that calls reset method
-
-    // RESET GAME 
-        // reset all variables (tbd) 
-        // call get question method 
 }; 
