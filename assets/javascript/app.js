@@ -192,7 +192,8 @@ var trivia = {
         console.log(this.questions[this.questionNumber]); 
         if (selectedAnswer === undefined) { 
             $(".areYouRight").html("You ran out of time. The correct answer was " + this.questions[this.questionNumber].answer); 
-            $(".image-timeout").show (); 
+            $(".image-timeout").show ();
+            $("#timeout")[0].play(); 
             this.questionNumber++; 
             this. timeOuts++; 
         }
