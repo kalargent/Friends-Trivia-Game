@@ -1,11 +1,20 @@
 // WATCHED THE FOLLOWING VIDEO AS A RESOURCE TO CREATING MY GAME - USED IT TO SET MY MAIN PSEUDOCODE SECTIONS, ALL CODE IS MY OWN
 // https://www.youtube.com/watch?v=KndV7UxLpnk&list=PLf1tvjFO2P7vIxVV5fZh7by2Vpm-vBhWN&index=9&t=6s
 
+// LETS SEE IF WE CAN LOAD SOME MUSIC WHEN THE PAGE OPENS 
+// $(document).ready (async function(){
+//     try {
+//         await $("#theme")[0].play();
+//     } catch (err){
+//         alert (err); 
+//     }
+// })
 
 // ON CLICK EVENT FOR START BUTTON TO GO AWAY 
 $(".btn-dark").on("click", function() {
     // remove button from view 
-    $(".btn-dark").remove(); 
+    $(".btn-dark").remove();
+    $("#theme")[0].play(); 
     // log to console
     console.log("user clicked start"); 
     trivia.getQuestion(); 
