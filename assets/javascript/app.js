@@ -15,7 +15,7 @@ $(".btn-dark").on("click", function() {
     // remove button from view 
     $(".btn-dark").remove();
     $("#theme")[0].play(); 
-    
+    $(".ready").html("<h1> Get Ready!!</h1>")
     // log to console
     console.log("user clicked start");
     // set tiu 
@@ -173,7 +173,8 @@ var trivia = {
     getQuestion: function () {
         // clear the question display html
         $(".question-display").empty(); 
-        $(".areYouRight").empty(); 
+        $(".areYouRight").empty();
+        $(".ready").empty();  
         $(".image-correct").hide ();
         $(".image-incorrect").hide ();
         $(".image-timeout").hide();  
