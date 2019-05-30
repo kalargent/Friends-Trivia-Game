@@ -129,25 +129,7 @@ var trivia = {
         }, 
     ], 
 
-    //METHODS 
-    // COUNTER 
 
-    // countdown: function () {
-    //     // clear any previous intervals
-    //     clearInterval(interval);
-    //     // count down in seconds 
-    //     interval = setInterval (decrement, 1000); 
-    //     counter--; 
-    //     // display countdown on screen 
-    //     $(".countdown").html(counter + "seconds left"); 
-    //     // log timeout when counter hits zero 
-    //     if (counter === 0) {
-    //         console.log("timeout"); 
-    //     }
-    // }, 
-
-    // COUNTDOWN 
-    // clear any previous intervals
     run: function () {
         clearInterval(this.counterTimer); 
         this.counterTimer = setInterval(this.decrement, 1000); 
@@ -163,11 +145,6 @@ var trivia = {
         }
         
     }, 
-
-    // PAUSE AUDIO
-    // pauseAudio: function () {
-    //     $("#theme")[0].pause(); 
-    // }, 
     
     // GET QUESTION METHOD
     getQuestion: function () {
@@ -200,11 +177,6 @@ var trivia = {
             // console.log(a);    
         };
     }, 
-
-    // // AUDIO CORRECT 
-    // audioCorrect: function () {
-
-    // }, 
 
     // CORRECT ANSWER 
     checkAnswer: function (selectedAnswer) {

@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+    <!-- DEFINES THE AUDIO LINKS - THEY LOAD AHEAD OF THE PAGE TO AVOID LAGS-->
     <audio id="theme">
         <source src = "assets/audio/friends_theme_song.mp3" type= "audio/mpeg">
     </audio>
@@ -22,9 +23,13 @@
             <source src = "assets/audio/bfbumer.mp3" type= "audio/mpeg">
     </audio>
 
+    <!-- DEFINES THE GAME CONTAINER -->
     <div class = "container">
+        <!-- DEFINES FIRST ROW -->
         <div class="row">
+            <!-- FIRST COLUMN CONTAINS A CARD DISPLAYING GAME INFO -->
             <div class="col-md"> 
+                <!-- CARD DISPLAY WITH START BUTTON -->
                 <div class="card" style="width: 18rem;">
                     <img src="assets/images/umbrellas.png" class="card-img-top">
                     <div class="card-body">
@@ -39,23 +44,28 @@
             </div>
         </div>
         
+        <!-- SECOND COLUMN IN THE ROW -->
         <div class="col-md">
+            <!-- DISPLAYS THE GET READY MESSAGE WHILE THE THEME PLAYS  -->
             <div class="ready"></div>
+            <!-- DISPLAYS COUNTDOWN TIMER -->
             <div class="countdown"></div>
             <br>
+            <!-- DISPLAYS THE CURRENT QUESTION  -->
             <div class="question-display"></div>
             <br>
+            <!-- DISPLAYS THE BUTTON ARRAY  -->
             <div id="button-display"></div>
 
+            <!-- DISPLAYS WHETHER USER IS RIGHT OR WRONG WITH IMAGE AND SOUND -->
             <div class="areYouRight">
             </div>
             <div class="image-correct yay-audio"><img src ="assets/images/monica.gif"></a>
             </div>
             <div class="image-incorrect boo-audio" ><img src ="assets/images/joey.gif"></div>
             <div class="image-timeout timeout-audio" ><img src ="assets/images/timeup.gif"></div>
-    
-            <div class="answer-page"></div>
 
+            <!-- DISPLAYS THE LAST PAGE WITH STATS AND THE PLAY AGAIN BUTTON  -->
             <div class="final-page" style="display: none">
                 <div id="message"></div>
                 <div id="correct"></div>
@@ -69,26 +79,9 @@
             
         </div>
     </div>
-        
-
-        <!-- <div class="answer-page"></div>
-        <div class="final-page">
-            <div id="message"></div>
-            <div id="correct"></div>
-            <div id="incorrect"></div>
-            <div id="timeout"></div>
-            <div id="photo"></div>
-            <div>
-                    <button type="button" class="btn btn-light" id="startagain">Start</button>
-            </div> --> 
         </div>
-
-       
-
     </div>
-
-    
-
+    <!-- LINK TO JAVASCRIPT FILE -->
 <script src = "assets/javascript/app.js"></script>
 
 </body>
