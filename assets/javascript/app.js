@@ -15,9 +15,14 @@ $(".btn-dark").on("click", function() {
     // remove button from view 
     $(".btn-dark").remove();
     $("#theme")[0].play(); 
+    
     // log to console
-    console.log("user clicked start"); 
-    trivia.getQuestion(); 
+    console.log("user clicked start");
+    // set tiu 
+    setTimeout(function(){
+        trivia.getQuestion()
+        $("#theme")[0].pause(); 
+    }, 4000);
 
 })
 
@@ -159,6 +164,11 @@ var trivia = {
         
     }, 
 
+    // PAUSE AUDIO
+    // pauseAudio: function () {
+    //     $("#theme")[0].pause(); 
+    // }, 
+    
     // GET QUESTION METHOD
     getQuestion: function () {
         // clear the question display html
@@ -166,7 +176,7 @@ var trivia = {
         $(".areYouRight").empty(); 
         $(".image-correct").hide ();
         $(".image-incorrect").hide ();
-        $(".image-timeout").hide(); 
+        $(".image-timeout").hide();  
         // start the countdown
         this.run ();
         // display the question on the screen 
@@ -190,10 +200,10 @@ var trivia = {
         };
     }, 
 
-    // AUDIO CORRECT 
-    audioCorrect: function () {
+    // // AUDIO CORRECT 
+    // audioCorrect: function () {
 
-    }, 
+    // }, 
 
     // CORRECT ANSWER 
     checkAnswer: function (selectedAnswer) {
@@ -246,7 +256,7 @@ var trivia = {
             else {
                 trivia.finalPage(); 
             }
-        }, 2000
+        }, 3000
         )
         
     }, 
