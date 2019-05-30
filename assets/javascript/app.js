@@ -10,23 +10,25 @@
 //     }
 // })
 
-// ON CLICK EVENT FOR START BUTTON TO GO AWAY 
+// ON CLICK EVENT FOR START BUTTON TO LOAD A QUESTION AND HIDE THE START BUTTON 
 $(".btn-dark").on("click", function() {
     // remove button from view 
     $(".btn-dark").remove();
+    // play theme song
     $("#theme")[0].play(); 
+    // display some text while the "game loads"
     $(".ready").html("<h1> Get Ready!!</h1>")
     // log to console
     console.log("user clicked start");
-    // set tiu 
+    // set timeout for theme music so it doesn't play the whole time
     setTimeout(function(){
         trivia.getQuestion()
         $("#theme")[0].pause(); 
-    }, 4000);
+    }, 4500);
 
 })
 
-// ON CLICK FOR RESET BUTTON 
+// ON CLICK FOR RESET BUTTON - RESETS GAME
 $(".btn-secondary").on("click", function() {
     console.log("user clicked Restart");
     $(".final-page").hide();
@@ -36,9 +38,6 @@ $(".btn-secondary").on("click", function() {
     trivia.timeOuts = 0;  
     trivia.getQuestion(); 
 })
-
-
-
 
 // ON CLICK FOR ANSWER BUTTONS
 $("#button-display").on("click", ".answerButton", function (e) {
@@ -52,8 +51,7 @@ $("#button-display").on("click", ".answerButton", function (e) {
     // trivia.answerIncorrect(selectedAnswer); 
 })
 
-
-// GAME VARIABLE WITH METHODS
+// GAME VARIABLES AND METHODS
 // declare Game variable as an object with the following properties: 
 var trivia = {
     // current question
@@ -64,7 +62,7 @@ var trivia = {
     incorrectGuesses: 0, 
     // timeouts 
     timeOuts: 0, 
-    // counter
+    // counter 
     counter: 3, 
     counterTimer: null, 
     // question number 
@@ -148,7 +146,7 @@ var trivia = {
     
     // GET QUESTION METHOD
     getQuestion: function () {
-        // clear the question display html
+        // clear and hide a bunch of things when the question loads
         $(".question-display").empty(); 
         $(".areYouRight").empty();
         $(".ready").empty();  
@@ -159,6 +157,7 @@ var trivia = {
         this.run ();
         // display the question on the screen 
         $(".countdown").html(this.counter + " seconds left to answer"); 
+        // display question 
         $(".question-display").html("<p>" + this.questions[this.questionNumber].questionText + "</p>"); 
         this.buttonGenerator();         
     }, 
@@ -173,38 +172,48 @@ var trivia = {
             a.addClass("answerButton"); 
             a.attr("data-name", this.questions[this.questionNumber].questionAnswer[i]); 
             a.text(this.questions[this.questionNumber].questionAnswer[i]); 
-            $("#button-display").append(a); 
-            // console.log(a);    
+            $("#button-display").append(a);   
         };
     }, 
 
-    // CORRECT ANSWER 
+    // CHECK IF THE ANSWER IS CORRECT, WRONG, OR IF THE QUESTION TIMED OUT (UNDEFINED) 
     checkAnswer: function (selectedAnswer) {
         //determine if the answer is correct 
         console.log(this.questions[this.questionNumber]); 
-        if (selectedAnswer === undefined) { 
+        // if the answer is undefined (timeout) 
+        if (selectedAnswer === undefined) {
+            // show the timeout message and image and play sound  
             $(".areYouRight").html("You ran out of time. The correct answer was " + this.questions[this.questionNumber].answer); 
             $(".image-timeout").show ();
             $("#timeout")[0].play(); 
+            // next question 
             this.questionNumber++; 
+            // add to timeout var
             this.timeOuts++; 
         }
+        // if the answer matches the correct one
         else if (selectedAnswer === this.questions[this.questionNumber].answer) {
             console.log("win");  
+            // increment the number correct 
             this.correctGuesses++; 
             console.log (this.correctGuesses);
+            // display win message and image and play sound
             $(".areYouRight").html("You're right! The correct answer was " + this.questions[this.questionNumber].answer); 
             $(".image-correct").show (); 
             $("#win")[0].play(); 
+            // next question 
             this.questionNumber++; 
         }    
         else {
             console.log("lose"); 
+            // increment incorrect guess 
             this.incorrectGuesses++; 
             console.log (this.incorrectGuesses);
+            // display lose message and image and play sound
             $(".areYouRight").html("You're wrong! The correct answer was " + this.questions[this.questionNumber].answer);
             $(".image-incorrect").show();
-            $("#lose")[0].play();   
+            $("#lose")[0].play(); 
+            // next question   
             this.questionNumber++; 
         }  
 
@@ -212,15 +221,15 @@ var trivia = {
             // this.answerPage(); 
     }, 
 
-
+    //DISPLAY ANSWER PAGE 
     answerPage: function () {
+        // clear question-display div, button displat, and countdown divs
         $(".question-display").empty();  
         $("#button-display").empty(); 
         $(".countdown").empty(); 
+        // clear countdown
         clearInterval(trivia.counterTimer);
-        // $("#message").html("You're right! The correct answer was " + this.questions[this.questionNumber].answer); 
-        // setTimeout(("You're right! The correct answer was " + this.questions[this.questionNumber].answer), 3000); 
-        // this.getQuestion(); 
+        // check for last question
         setTimeout (function (){
             if (trivia.questionNumber < trivia.questions.length){
                 trivia.getQuestion(); 
@@ -234,13 +243,16 @@ var trivia = {
         
     }, 
 
+    // DISPLAY STATS PAGE WITH FINAL COUNTS AND A RESTART
     finalPage: function () {
+        // empty and hide divs
         $(".question-display").empty();  
         $("#button-display").empty(); 
         $(".areYouRight").empty(); 
         $(".image-correct").hide ();
         $(".image-incorrect").hide ();
         $(".final-page").show (); 
+        // display messages for correct, incorrect and time out 
         $("#message").html("<h2>You're done! Here are your results:</h2>");
         $("#correct").html("Correct Guesses: " + this.correctGuesses);  
         $("#incorrect").html("Incorrect Guesses: " + this.incorrectGuesses); 
