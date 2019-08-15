@@ -76,7 +76,7 @@ var trivia = {
             // question text
             questionText: "According to Chandler, what scares the bejeezus out of him?", 
             // question answers array
-            questionAnswer: ["Clowns", "Another Scary thing", "one more", "Michael Flatley, Lord of the Dance"], 
+            questionAnswer: ["Clowns", "Another Scary thing", "Animals dressed as humans", "Michael Flatley, Lord of the Dance"], 
             // correct answer 
             answer: "Michael Flatley, Lord of the Dance" 
         }, 
